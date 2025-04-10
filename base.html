@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+ 
+<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <section class="bar">
+        <a href="index.html" class="button2">Home</a>
+        <a href="{{ url_for('signup') }}" class="button2">Signup</a>
+        <a href="{{ url_for('about') }}" class="button2" >About</a>
+        <a href="signin.html" class="button2">Sign in</a>
+        <input type="text" id="Search">
+      </section>
+      {%block content%}
+      {%endblock%}
+    <br />
+    <br />
+    <br />
+    <div class="sign_up_box"></div>
+    
+      
+      <script scr="{{ url_for('static', filename='js/index.js')}}"></script>
+</body>
+</html>
