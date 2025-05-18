@@ -10,7 +10,9 @@ def about():
 @app.route("/signup")
 def signup():
     return render_template("sign_up.html")
-
+@app.route("/chickens")
+def chickens():
+    return render_template("chickens.html")
 if __name__ == '__main__':
   print("Flask app started")
   try:
