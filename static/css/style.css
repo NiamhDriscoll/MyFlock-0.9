@@ -55,9 +55,14 @@ html {
     src: url('fonts/Allura-Regular.ttf') format('truetype'); 
   }
   
-  #OurFlock {
-    font-family: 'Allura-Regular';
+  #MyFlockFont {
+    font-family: 'Arial';
     text-align: center;
+  }
+  #sign_up_text {
+    font-family: Arial;
+    color: white;
+
   }
   .sign_up_box{
       width: 600px;
