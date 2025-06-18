@@ -1,6 +1,11 @@
 html {
     font-family: Arial;
     /*#DFEBF2*/
+    
+    background-size: cover;
+    background-attachment: fixed;
+}
+.home_bg{
     background-image: url('../images/4518.webp');
     background-size: cover;
     background-attachment: fixed;
@@ -9,6 +14,10 @@ html {
     background-color: black;
     color: white;
     padding: 20px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
   }
   
   
@@ -73,4 +82,27 @@ html {
       height: 600px;
       background: black;
       margin: 0 auto;
+      border-top-right-radius: 15px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+  }
+
+  .other_bg{
+   
+    background-color: #DFEBF2;
+
+  }
+ 
+  .sign_up_image{
+      width: 100px;
+      height: 100px;
+      background-image: url('../images/sign_up_image.png');
+      border-top-right-radius: 15px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      align-items: center;
+      left:50%
+      
   }
