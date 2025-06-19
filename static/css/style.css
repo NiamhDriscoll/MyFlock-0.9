@@ -86,6 +86,8 @@ html {
       border-top-left-radius: 15px;
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
+      text-align: center;
+      
   }
 
   .other_bg{
@@ -103,6 +105,7 @@ html {
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
       align-items: center;
-      left:50%
+      left: 50%;
       
+     
   }
