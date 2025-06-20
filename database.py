@@ -1,11 +1,7 @@
 import sqlite3
 import json
 
-with open("data.json", "r") as f:
-    data = json.load(f)
-    for username in data:["username"]
-    for password in data:["password"]
-    for email in data:["email"]
+
     
 
   
@@ -21,6 +17,11 @@ def insert(username, email, password):
     try: 
         conn = sqlite3.connect("/home/nolson/data/data.db")
         cur = conn.cursor
+        with open("data.json", "r") as f:
+         data = json.load(f)
+        username = data ["username"]
+        password = data ["password"]
+        email = data ["email"]
         cur.execute("INSERT INTO people (username TEXT, email TEXT, password TEXT) VALUES (?, ?, ?)", (username, email, password))
         print("Data inserted successfully")
     except sqlite3.Error as e:

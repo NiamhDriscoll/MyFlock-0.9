@@ -1,8 +1,36 @@
 from flask import Flask, render_template, redirect, url_for, request
 import json 
-from database import init_db, insert , sqlite3
+import sqlite3
 
 app = Flask(__name__)
+
+
+
+
+def insert(username, email, password):
+    try:
+        conn = sqlite3.connect("/home/nolson/data/data.db")
+        cur = conn.cursor()
+        cur.execute (''' CREATE TABLE IF NOT EXISTS people
+(username TEXT, email TEXT, password TEXT)''')
+        with open("data.json", "r") as f:
+         data = json.load(f)
+         username = data["username"]
+         password = data["password"]
+         email = data["email"]
+         cur.execute("INSERT INTO people (username, email, password) VALUES (?, ?, ?)", (username, email, password))
+         print("Data inserted successfully")
+    except sqlite3.Error as e:
+        print(f"An error occurred: {e}")
+    else:
+        conn.commit()
+    finally:
+     if cur:
+        cur.close()
+     if conn:
+        conn.close 
+
+
 
 @app.route("/")
 def home():
@@ -28,8 +56,7 @@ def signup():
          json.dump(new_user, f, indent=4)
         print("Data saved to data.json")
         try:
-         init_db
-         insert
+         insert(username, email, password)
          print("User data added to database")
         except sqlite3.Error as e:
             print(f"An error occurred while inserting data: {e}")
@@ -47,7 +74,7 @@ def chickens():
 if __name__ == '__main__':
   print("Flask app started")
   try:
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
     print("Flask app ended")
   except Exception as e:
     print(f"An error occurred: {e}")
