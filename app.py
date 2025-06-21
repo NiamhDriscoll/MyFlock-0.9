@@ -38,6 +38,9 @@ def home():
 @app.route("/about")
 def about():
     return render_template("about.html")
+@app.route("/error_page")
+def error_page():
+    return render_template("error_page.html")
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     
