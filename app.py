@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request
 import json 
 import sqlite3
+import time
 
 app = Flask(__name__)
 
@@ -49,6 +50,13 @@ def signup():
         password = request.form.get("password")
         email = request.form.get("email")
         print("Successfully received data")
+
+        junk =  {
+        "username" : "NO DATA",
+        "password" : "NO DATA",
+        "email" : "NO DATA"
+
+        }
         
         new_user = {
         "username": username,
@@ -61,12 +69,14 @@ def signup():
         try:
          insert(username, email, password)
          print("User data added to database")
+         with open("data.json", "w") as f:
+             json.dump(junk, f, indent=4)
         except sqlite3.Error as e:
             print(f"An error occurred while inserting data: {e}")
             return redirect(url_for("home"))
         except Exception as e:
             print(f"An error occurred while inserting data: {e}")
-            return redirect(url_for("home"))
+            return redirect(url_for("error_page"))
     # Make apology page if it fails to insert data
 
     return render_template("sign_up.html")
