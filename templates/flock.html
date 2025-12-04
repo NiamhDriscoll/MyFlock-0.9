@@ -8,7 +8,20 @@
         <a href="/flock" class="button2">Flock</a>
 
         <a href="/logout" class="button2">Log out</a>
-        <a href="/user" class="user_button">{{name}}</a>
+            <button class="userbutton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">{{name}}</button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Account details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <p>Username: {{ name }}</p>
+            <p>Email: {{ email }}</p>
+            <a href="/logout" class="button2">Log out</a>
+        </div>
+    </div>
     </section>
     <br />
     <div>
