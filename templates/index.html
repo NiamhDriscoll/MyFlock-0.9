@@ -1,7 +1,40 @@
 {% extends 'base.html' %}
 {%block content%}
+<section class="bar">
+    <a href="{{ url_for('home')}}" class="button2">Home</a>
+
+    <a href="{{ url_for('chickens')}}" class="button2">Chicken Info</a>
+    <a href="/flock" class="button2">Flock</a>
+    
+    <button class="userbutton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">{{name}}</button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Account details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <p>Username: {{ name }}</p>
+            <p>Email: {{ email }}</p>
+            <a href="/logout" class="button2">Log out</a>
+        </div>
+    </div>
+    
+</section>
 <body class="home_bg">
-<br />
-<br />
+    <div class="index_section">
+        <h1>Welcome to MyFlock, {{name}}!</h1>
+        <p>Your personal chicken management app.</p>
+        <br>
+        <div class="mb-3">
+            <a href="/flock" class="btn btn-primary ">View Your Flock</a>
+        </div>
+        <div class="mb-3">
+            <a href="/addchicken" class="btn btn-primary">Add a New Chicken</a>
+        </div>
+        
+
+    </div>
 </body>
 {%endblock%}

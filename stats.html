@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{%block content%}
+<section class="bar">
+    <a href="{{ url_for('home')}}" class="button2">Home</a>
+    <a href="{{ url_for('about') }}" class="button2">About</a>
+    <a href="{{ url_for('chickens')}}" class="button2">Chicken Info</a>
+    <a href="/logout" class="button2">Log out</a>
+    <a href="/user" class="user_button">{{name}}</a>
+</section>
+
+<div class="card">
+    
+    <div class="card-body">
+        <h5 class="card-title">Easter eggers</h5>
+        <p class="card-text">The hybred chicken that lays colorful eggs!</p>
+        <a href="#" class="btn btn-primary">View</a>
+    </div>
+
+</div>
+
+{%endblock%}

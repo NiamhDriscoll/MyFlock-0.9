@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{%block content%}
+<section class="bar">
+    <a href="{{ url_for('home')}}" class="button2">Home</a>
+
+    <a href="{{ url_for('chickens')}}" class="button2">Chicken Info</a>
+    <a href="/flock" class="button2">Flock</a>
+    <a href="/logout" class="button2">Log out</a>
+    <a href="/user" class="user_button">{{name}}</a>
+</section>
+
+
+
+<div class="center_flex">
+    <br />
+
+    <h5>Here is some information about some popular chicken breeds</h5>
+
+    <br>
+    <div class="mb-3">
+        <h5 class="card-title">Easter eggers</h5>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+
+            <p>Easter eggers are not a breed, they are a mix. This means some easter eggers look very differant from others. They are called easter eggers because they lay colorful eggs!</p>
+        </div>
+    </div>
+    <br>
+    <div class="mb-3">
+        <h5 class="card-title">Orpingtons</h5>
+    </div>
+
+    <div class="mb-3">
+
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body">
+
+                <p>Orpingtons are very docile and are good with kids. They are big and fluffy. There are many types of Orpingtons, but the most common is the Buff Orpington. Other types include Black, White, Blue, Cuckoo, and Jubilee </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <h5 class="card-title">Barred Rock</h5>
+    </div>
+    <div class="mb-3">
+
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body">
+
+                <p>
+                    Barred Rock chickens are sweet, intellegent birds. They have a black and white feather pattern, and it is very soft. They are also sometimes called the Plymouth Rock chicken
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <h5 class="card-title">Silkie</h5>
+    </div>
+    <div class="mb-3">
+
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body">
+
+                <p>
+                    Silkies are very unique chickens. They have fluffy feathers that feel like silk or fur. They also have black skin and bones, blue earlobes, and five toes on each foot, whereas most chickens only have four. They are not good layers, laying 100 or fewer eggs per year, but they are great pets and beautiful.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <h5 class="card-title">Rhode Island Red</h5>
+    </div>
+    <div class="mb-3">
+
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body">
+
+                <p>
+                    Rhode Island Reds, as their name suggests, are from Rhode Island and are red. They are known for being hardy and very good layers, laying around 250-300 eggs per year.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {%endblock%}

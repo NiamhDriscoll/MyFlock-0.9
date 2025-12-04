@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{%block content%}
+<body>
+    <section class="bar">
+        <a href="{{ url_for('home')}}" class="button2">Home</a>
+
+        <a href="{{ url_for('chickens')}}" class="button2">Chicken Info</a>
+        <a href="/flock" class="button2">Flock</a>
+
+        <a href="/logout" class="button2">Log out</a>
+        <a href="/user" class="user_button">{{name}}</a>
+    </section>
+    <br />
+    <div>
+        <div class="center_flex">
+            <h2>Your Flock</h2>
+            <p>Manage and monitor your chickens here.</p>
+
+            <a href="/addchicken" class="btn btn-primary">Add New Chicken</a>
+            <br />
+            <br />
+
+            {% for chicken in chickens %}
+            <div class="mb-3">
+                <div class="card" style="width: 18rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ chicken.name }}</h5>
+                        <p>Breed: {{ chicken.breed }}</p>
+                        <p>Birthdate: {{ chicken.birth_date }}</p>
+                        <p>Info: {{ chicken.info }}</p>
+                        <a type="button" href="/editchicken?id={{ chicken.id }}" class="btn btn-outline-light">Edit</a>
+                        <a type="button" href="/deletechicken?id={{chicken.id}}" class="btn btn-outline-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+
+
+            {% else %}
+            <p>No chickens in your flock yet. Start by adding one!</p>
+            {% endfor %}
+
+        </div>
+    </div>
+</body>
+{%endblock%}
