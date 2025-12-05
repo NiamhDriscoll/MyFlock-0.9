@@ -5,6 +5,9 @@ html {
     background-size: cover;
     background-attachment: fixed;
 }
+p{
+  color: white;
+}
 .home_bg{
     background-image: url('../images/4518.webp');
     background-size: cover;

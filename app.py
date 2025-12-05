@@ -1,6 +1,6 @@
 import email
 from flask import Flask, flash, redirect, render_template, request, session
-import json 
+
 import sqlite3
 import time
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -213,8 +213,10 @@ def signup():
 
 @app.route("/stats")
 @login_required
-def chickens():
-    return render_template("stats.html")
+def stats():
+    email = get_email()
+    username = get_username()
+    return render_template("stats.html", email=email, name=username)
 
 @app.route("/landing")
 def landing():
@@ -336,8 +338,9 @@ def flock():
     
     cur.close()
     conn.close()
+    email = get_email()
     user_name = get_username()
-    return render_template("flock.html", chickens=birds, name=user_name)
+    return render_template("flock.html", chickens=birds, name=user_name, email=email)
 
 
 if __name__ == '__main__':

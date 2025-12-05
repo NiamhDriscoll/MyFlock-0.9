@@ -4,15 +4,15 @@
     <section class="bar">
         <a href="{{ url_for('home')}}" class="button2">Home</a>
 
-        <a href="{{ url_for('chickens')}}" class="button2">Chicken Info</a>
+        <a href="/stats" class="button2">Chicken Info</a>
         <a href="/flock" class="button2">Flock</a>
 
-        <a href="/logout" class="button2">Log out</a>
-            <button class="userbutton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">{{name}}</button>
+       
+    <button class="userbutton" style="background-color: black;"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">{{name}}</button>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="background-color: black;">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">Account details</h5>
+            <h5 class="offcanvas-title" style="color: white;" id="offcanvasRightLabel">Account details</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -37,8 +37,8 @@
             <div class="mb-3">
                 <div class="card" style="width: 18rem;">
 
-                    <div class="card-body">
-                        <h5 class="card-title">{{ chicken.name }}</h5>
+                    <div class="card-body" class="mb-3" style="background-color: black;">
+                        <h5 class="card-title" style="color: white;">{{ chicken.name }}</h5>
                         <p>Breed: {{ chicken.breed }}</p>
                         <p>Birthdate: {{ chicken.birth_date }}</p>
                         <p>Info: {{ chicken.info }}</p>
