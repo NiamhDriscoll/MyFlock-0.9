@@ -74,9 +74,11 @@ def login():
                     return render_template("login_error.html", logerror="Username/password incorrect")
                 session["user_id"] = row[0]
                 return redirect("/")
-                
+        else:
+            return render_template("")
+
     else:
-        return render_template("login.html")
+        return render_template("signin.html")
 
 @app.route("/")
 @login_required
@@ -87,7 +89,7 @@ def home():
     conn = sqlite3.connect("data.db")
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
-    
+
     cur.execute("SELECT * FROM birds WHERE flock_id IN (SELECT id FROM flocks WHERE user_id = ?)", (user_id,))
     chickens = cur.fetchall()
     return render_template("index.html", name=username, chickens=chickens, email=email)
@@ -114,7 +116,7 @@ def deletechicken():
         conn.close()
         return redirect("/flock")
     else:
-        
+
         cur.close()
         conn.close()
         return render_template("deletechicken.html", chicken=chickens)
@@ -138,11 +140,11 @@ def editchicken():
                 if request.form.get("birth"):
                     chicken_name = request.form.get("name")
                     chicken_breed = request.form.get("breed")
-                    chicken_birth = request.form.get("birth")   
+                    chicken_birth = request.form.get("birth")
                     chicken_info = request.form.get("info")
                     chicken_id = request.args.get("id", type=int)
                     print(chicken_id)
-                    
+
                     cur.execute("UPDATE birds SET name = ?, breed = ?, birth_date = ?, info = ? WHERE id = ?", (chicken_name, chicken_breed, chicken_birth, chicken_info, chicken_id))
                     conn.commit()
                     cur.close()
@@ -162,7 +164,7 @@ def editchicken():
     else:
         cur.close()
         conn.close()
-        
+
         return render_template("editchicken.html", chicken=chickens)
 
 @app.route("/error_page")
@@ -170,24 +172,24 @@ def error_page():
     return render_template("error_page.html")
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
-    
+
     if request.method == "POST":
         if request.form.get("username"):
             if request.form.get("password"):
                 if request.form.get("email"):
-
+                    print("Adding data")
                     username = request.form.get("username")
                     password = request.form.get("password")
                     email = request.form.get("email")
                     print("Successfully received data")
-                    
+
 
 
                     password = generate_password_hash(password)
                     conn = sqlite3.connect("data.db")
                     cur = conn.cursor()
                     conn.row_factory = sqlite3.Row
-                    cur.execute("SELECT * FROM people WHERE username = ?", (username,)); 
+                    cur.execute("SELECT * FROM people WHERE username = ?", (username,));
                     if cur.fetchone() is not None:
                         return render_template("login_error.html", logerror="Username taken")
                     cur.execute("INSERT INTO people (username, email, password) VALUES (?, ?, ?)", (username, email, password))
@@ -195,9 +197,9 @@ def signup():
                     cur.execute("SELECT id FROM people WHERE username = ?", (username,));
                     tmp = cur.fetchone()
                     id = tmp[0]
-                   
+
                     session["user_id"] = id;
-                                      
+
                     cur.close()
                     conn.close()
                     return redirect("/")
@@ -236,8 +238,8 @@ def signin():
                 cur = conn.cursor()
                 cur.execute("SELECT * FROM people WHERE username = ?", (username,));
                 row = cur.fetchone()
-                
-                
+
+
                 cur.close()
                 conn.close()
                 if row is None:
@@ -249,7 +251,7 @@ def signin():
                     session["user_id"] = row["id"]
                     return redirect("/")
                 else:
-                    
+
                     return render_template("login_error.html", logerror="Username/password incorrect")
             else:
                 return render_template("login_error.html", logerror="No password")
@@ -277,7 +279,7 @@ def addchicken():
                     chicken_name = request.form.get("name")
                     chicken_breed = request.form.get("breed")
                     chicken_birth = request.form.get("birth")
-                    
+
                     user_id = session["user_id"]
                     conn = sqlite3.connect("data.db")
                     conn.row_factory = sqlite3.Row
@@ -329,13 +331,13 @@ def flock():
     cur.execute("SELECT id FROM flocks WHERE user_id = ?", (user_id,))
     flock_id = cur.fetchall()
     if not flock_id:
-        
+
         return redirect("/addchicken")
-   
-    
+
+
     cur.execute("SELECT * FROM birds WHERE flock_id = ?", (flock_id[0]["id"],))
     birds = cur.fetchall()
-    
+
     cur.close()
     conn.close()
     email = get_email()
