@@ -1,21 +1,120 @@
 {% extends 'base.html' %}
 {%block content%}
+<div >
 <section class="bar">
     <a href="{{ url_for('home')}}" class="button2">Home</a>
-    <a href="{{ url_for('about') }}" class="button2">About</a>
-    <a href="{{ url_for('chickens')}}" class="button2">Chicken Info</a>
-    <a href="/logout" class="button2">Log out</a>
-    <a href="/user" class="user_button">{{name}}</a>
+
+    <a href="/stats" class="button2">Chicken Info</a>
+    <a href="/flock" class="button2">Flock</a>
+
+    <button class="userbutton" style="background-color: black;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">{{name}}</button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="background-color: black;">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel" style="color: white;">Account details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <p>Username: {{ name }}</p>
+            <p>Email: {{ email }}</p>
+            <a href="/logout" class="button2">Log out</a>
+        </div>
+    </div>
 </section>
 
-<div class="card">
-    
-    <div class="card-body">
+
+
+<div class="center_flex">
+    <br />
+
+    <h5>Here is some information about some popular chicken breeds</h5>
+
+    <br>
+    <div class="mb-3">
         <h5 class="card-title">Easter eggers</h5>
-        <p class="card-text">The hybred chicken that lays colorful eggs!</p>
-        <a href="#" class="btn btn-primary">View</a>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body" style="background-color: black;">
+
+            <p>Easter eggers are not a breed, they are a mix. This means some easter eggers look very differant from others. They are called easter eggers because they lay colorful eggs!</p>
+        </div>
+    </div>
+    <br>
+    <div class="mb-3">
+        <h5 class="card-title">Orpingtons</h5>
+    </div>
+
+    <div class="mb-3">
+
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body" style="background-color: black;">
+
+                <p>Orpingtons are very docile and are good with kids. They are big and fluffy. There are many types of Orpingtons, but the most common is the Buff Orpington. Other types include Black, White, Blue, Cuckoo, and Jubilee </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <h5 class="card-title" >Barred Rock</h5>
+    </div>
+    <div class="mb-3">
+
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body" style="background-color: black;">
+
+                <p>
+                    Barred Rock chickens are sweet, intellegent birds. They have a black and white feather pattern, and it is very soft. They are also sometimes called the Plymouth Rock chicken
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <h5 class="card-title">Silkie</h5>
+    </div>
+    <div class="mb-3">
+
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body" style="background-color: black;">
+
+                <p>
+                    Silkies are very unique chickens. They have fluffy feathers that feel like silk or fur. They also have black skin and bones, blue earlobes, and five toes on each foot, while most chickens only have four. They are not good layers, laying 100 or fewer eggs per year, but they are great pets and beautiful.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <h5 class="card-title">Rhode Island Red</h5>
+    </div>
+    <div class="mb-3">
+
+        <div class="card" style="width: 18rem;" style="background-color: black;">
+            <div class="card-body" style="background-color: black;">
+                <p>
+                    Rhode Island Reds, as their name suggests, are from Rhode Island and are red. They are known for being hardy and very good layers, laying around 250-300 eggs per year.
+                </p>
+            </div>
+        </div>
     </div>
 
 </div>
 
-{%endblock%}
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    {%endblock%}

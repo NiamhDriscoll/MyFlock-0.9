@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{%block content%}
+<body>
+    <section class="bar">
+        <a href="{{ url_for('home')}}" class="button2">Home</a>
+
+        <a href="/stats" class="button2">Chicken Info</a>
+        <a href="/flock" class="button2">Flock</a>
+
+       
+    <button class="userbutton" style="background-color: black;"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">{{name}}</button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="background-color: black;">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" style="color: white;" id="offcanvasRightLabel">Account details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <p>Username: {{ name }}</p>
+            <p>Email: {{ email }}</p>
+            <a href="/logout" class="button2">Log out</a>
+        </div>
+    </div>
+    </section>
+    <br />
+    <div>
+        <div class="center_flex">
+            <h2>Your Flock</h2>
+            <p>Manage and monitor your chickens here.</p>
+
+            <a href="/addchicken" class="btn btn-primary">Add New Chicken</a>
+            <br />
+            <br />
+
+            {% for chicken in chickens %}
+            <div class="mb-3">
+                <div class="card" style="width: 18rem;">
+
+                    <div class="card-body" class="mb-3" style="background-color: black;">
+                        <h5 class="card-title" style="color: white;">{{ chicken.name }}</h5>
+                        <p>Breed: {{ chicken.breed }}</p>
+                        <p>Birthdate: {{ chicken.birth_date }}</p>
+                        <p>Info: {{ chicken.info }}</p>
+                        <a type="button" href="/editchicken?id={{ chicken.id }}" class="btn btn-outline-light">Edit</a>
+                        <a type="button" href="/deletechicken?id={{chicken.id}}" class="btn btn-outline-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+
+
+            {% else %}
+            <p>No chickens in your flock yet. Start by adding one!</p>
+            {% endfor %}
+
+        </div>
+    </div>
+</body>
+{%endblock%}
